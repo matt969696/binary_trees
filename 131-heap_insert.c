@@ -59,63 +59,6 @@ heap_t *heap_rebalance(heap_t *new, heap_t *parent)
 }
 
 
-/**
- * heap_rebalance2 - rebalance an HEAP tree if needed
- * @root: pointer to the root of the tree
- * @new: pointer to the new node
- * @parent: pointer to the new parent
- * Return: None
- */
-
-void heap_rebalance2(heap_t **root, heap_t *new, heap_t *parent)
-{
-	heap_t *tmp, *tmp2;
-
-	tmp = parent->parent;
-	new->parent = tmp;
-	if (tmp != NULL)
-	{
-		if (tmp->left == parent)
-			tmp->left = new;
-		else
-			tmp->right = new;
-	}
-	if (parent->left == new)
-	{
-		tmp2 = parent->right;
-		parent->right = new->right;
-		if (parent->right != NULL)
-			parent->right->parent = new;
-		parent->left = new->left;
-		if (parent->left != NULL)
-			parent->left->parent = new;
-		new->left = parent;
-		parent->parent = new;
-		new->right = tmp2;
-		if (new->right != NULL)
-			new->right->parent = new;
-	}
-	else
-	{
-		tmp2 = parent->left;
-		parent->right = new->right;
-		if (parent->right != NULL)
-			parent->right->parent = new;
-		parent->left = new->left;
-		if (parent->left != NULL)
-			parent->left->parent = new;
-		new->right = parent;
-		parent->parent = new;
-		new->left = tmp2;
-		if (new->left != NULL)
-			new->left->parent = new;
-	}
-	if (new->parent == NULL)
-		*root = new;
-}
-
-
-
 
 /**
  * heap_insert - Insets a value in a HEAP
