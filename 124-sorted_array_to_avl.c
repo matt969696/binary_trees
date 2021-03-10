@@ -5,7 +5,7 @@
 /**
  * sorted_insert - recursively builds a AVL from a sorted array
  * @parent: pointer to the parent node
- * @parray: input array
+ * @array: input array
  * @start: starting array index
  * @end: ending array index
  * Return: pointer to the root node of the created AVL, or NULL on failure
