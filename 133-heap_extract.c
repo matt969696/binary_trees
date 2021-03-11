@@ -2,7 +2,7 @@
 
 
 /**
- * binary_tree_size - Measures the size of a binary tree
+ * binary_tree_size2 - Measures the size of a binary tree
  * @tree: pointer to the root node
  * Return: the size, otherwise 0
  */
@@ -17,7 +17,7 @@ size_t binary_tree_size2(const binary_tree_t *tree)
 
 
 /**
- * heap_find_node - Finds the node corresponding to number
+ * heap_find_node2 - Finds the node corresponding to number
  * @root: pointer to the root
  * @number: index of the node to find
  * Return: pointer to the node
@@ -42,7 +42,7 @@ heap_t *heap_find_node2(heap_t *root, size_t number)
 
 
 /**
- * heap_rebalance - rebalance an HEAP tree if needed
+ * heap_rebalance2 - rebalance an HEAP tree if needed
  * @new: pointer to the new node
  * @parent: pointer to the new parent
  * Return: parent
