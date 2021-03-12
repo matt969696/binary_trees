@@ -112,6 +112,7 @@ int heap_extract(heap_t **root)
 	if (size == 1)
 	{
 		free(node);
+		*root = NULL;
 		return (value);
 	}
 
