@@ -115,7 +115,6 @@ int heap_extract(heap_t **root)
 		*root = NULL;
 		return (value);
 	}
-
 	(*root)->n = node->n;
 	if (size % 2 == 1)
 		node->parent->right = NULL;
@@ -123,7 +122,6 @@ int heap_extract(heap_t **root)
 		node->parent->left = NULL;
 	free(node);
 	new = *root;
-
 	while (doswap == 1)
 	{
 		succ = heap_find_max(new);
@@ -134,6 +132,4 @@ int heap_extract(heap_t **root)
 	}
 
 	return (value);
-
-
 }
