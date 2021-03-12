@@ -71,13 +71,12 @@ avl_t *avl_removefirst(avl_t *root, int value)
  */
 
 
-avl_t *avl_search(const avl_t *tree, int value)
+avl_t *avl_search(avl_t *tree, int value)
 {
 	if (tree == NULL)
 		return (NULL);
-
 	if (tree->n == value)
-		return ((avl_t *)tree);
+		return (tree);
 	if (tree->n > value)
 		return (avl_search(tree->left, value));
 	return (avl_search(tree->right, value));
@@ -97,6 +96,7 @@ avl_t *avl_rebalance2(avl_t *root, avl_t *tree)
 	int balance;
 
 	balance = binary_tree_balance(tree);
+
 	if (balance > 1)
 	{
 		if (binary_tree_balance(tree->left) >= 0)
@@ -149,10 +149,17 @@ avl_t *avl_remove(avl_t *root, int value)
 		return (NULL);
 
 	ancestor = avl_search(root, value);
+
 	if (ancestor != NULL)
 		ancestor = ancestor->parent;
 
 	root = avl_removefirst(root, value);
+
+	if (ancestor != NULL && ancestor->n < value && ancestor->right != NULL)
+		ancestor = ancestor->right;
+	if (ancestor != NULL && ancestor->n > value && ancestor->left != NULL)
+		ancestor = ancestor->left;
+
 
 	while (ancestor != NULL)
 	{
